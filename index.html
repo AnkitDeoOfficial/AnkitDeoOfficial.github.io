@@ -3,138 +3,1003 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit Deo | Portfolio</title>
+
+    <title>Ankit Deo — Developer</title>
+    <meta name="description" content="Ankit Deo — Developer, programmer and technology enthusiast.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #0f172a;
-            color: white;
-            line-height: 1.6;
+            font-family: "Inter", sans-serif;
+            background: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        header {
-            min-height: 100vh;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ::selection {
+            background: #ffffff;
+            color: #000000;
+        }
+
+
+        /* =========================
+           CHESS BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.025) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.025) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.025) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.025) 75%);
+
+            background-size: 100px 100px;
+            background-position: 0 0, 0 50px, 50px -50px, -50px 0;
+            opacity: 0.55;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05), transparent 30%),
+                linear-gradient(to bottom, transparent, #050505 90%);
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            padding: 30px;
+
+            padding: 22px 7%;
+
+            background: rgba(5,5,5,0.65);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .container {
-            max-width: 800px;
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
 
-        h1 {
-            font-size: 55px;
-            margin-bottom: 10px;
+        .logo span {
+            color: #888;
         }
 
-        h2 {
-            color: #38bdf8;
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #aaa;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            max-width: 1250px;
+            margin: auto;
+            padding: 140px 40px 80px;
+
+            gap: 70px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #aaa;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 35px;
+            height: 1px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(65px, 9vw, 125px);
+            line-height: 0.9;
+            letter-spacing: -6px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+
+        .hero-description {
+            max-width: 600px;
+
+            color: #aaa;
+            font-size: 17px;
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: 1px solid white;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .btn.primary {
+            background: white;
+            color: black;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(255,255,255,0.12);
+        }
+
+        .btn.secondary {
+            border-color: #444;
+            color: #aaa;
+        }
+
+        .btn.secondary:hover {
+            border-color: white;
+            color: white;
+        }
+
+
+        /* =========================
+           PROFILE PHOTO
+        ========================= */
+
+        .profile-container {
+            width: 390px;
+            height: 490px;
+
+            position: relative;
+
+            flex-shrink: 0;
+        }
+
+        .profile-container::before {
+            content: "";
+
+            position: absolute;
+            inset: -18px;
+
+            border: 1px solid rgba(255,255,255,0.25);
+
+            transform: rotate(5deg);
+            transition: 0.6s;
+        }
+
+        .profile-container:hover::before {
+            transform: rotate(-3deg);
+        }
+
+        .profile-frame {
+            width: 100%;
+            height: 100%;
+
+            position: relative;
+            overflow: hidden;
+
+            background: #111;
+
+            border: 1px solid #333;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: grayscale(100%) contrast(1.1);
+
+            transition: 0.7s;
+        }
+
+        .profile-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        .profile-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+
+            padding: 10px 15px;
+
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255,255,255,0.2);
+
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 130px 40px;
+        }
+
+        .section-number {
+            color: #555;
+            font-size: 13px;
+            letter-spacing: 3px;
             margin-bottom: 15px;
         }
 
-        p {
-            color: #cbd5e1;
-            font-size: 18px;
-            margin-bottom: 20px;
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(45px, 6vw, 75px);
+            margin-bottom: 60px;
         }
 
-        .buttons a {
-            display: inline-block;
-            padding: 12px 22px;
-            margin: 8px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            background: #0284c7;
+        .section-title span {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
         }
 
-        section {
-            padding: 70px 20px;
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .about-text {
+            color: #aaa;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat {
+            padding: 30px;
+            border: 1px solid #222;
+
+            background: rgba(255,255,255,0.02);
+
+            transition: 0.4s;
+        }
+
+        .stat:hover {
+            border-color: #777;
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: "Playfair Display", serif;
+            font-size: 45px;
+        }
+
+        .stat-title {
+            color: #777;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 15px 22px;
+
+            border: 1px solid #333;
+            background: rgba(255,255,255,0.025);
+
+            color: #ccc;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: white;
+            color: black;
+            transform: translateY(-5px);
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            position: relative;
+            min-height: 350px;
+
+            padding: 35px;
+
+            border: 1px solid #292929;
+
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.06),
+                rgba(255,255,255,0.01)
+            );
+
+            overflow: hidden;
+
+            transition: 0.5s;
+        }
+
+        .project::before {
+            content: "♞";
+
+            position: absolute;
+            right: -20px;
+            bottom: -55px;
+
+            font-size: 220px;
+
+            color: rgba(255,255,255,0.025);
+
+            transition: 0.5s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            border-color: #777;
+        }
+
+        .project:hover::before {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .project-number {
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .project h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            margin: 35px 0 15px;
+        }
+
+        .project p {
+            color: #999;
+            line-height: 1.7;
+            max-width: 450px;
+        }
+
+        .project-link {
+            position: absolute;
+            bottom: 30px;
+
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
             text-align: center;
+            padding-bottom: 160px;
         }
 
-        .card {
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 25px;
-            background: #1e293b;
-            border-radius: 12px;
+        .contact h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: 1;
+            margin-bottom: 25px;
         }
+
+        .contact p {
+            color: #888;
+            max-width: 550px;
+            margin: auto auto 35px;
+            line-height: 1.8;
+        }
+
+        .email {
+            display: inline-block;
+
+            font-size: 18px;
+
+            padding-bottom: 8px;
+
+            border-bottom: 1px solid white;
+
+            transition: 0.3s;
+        }
+
+        .email:hover {
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            text-align: center;
-            padding: 30px;
-            color: #94a3b8;
+            padding: 30px 7%;
+
+            display: flex;
+            justify-content: space-between;
+
+            border-top: 1px solid #1d1d1d;
+
+            color: #555;
+            font-size: 12px;
         }
+
+
+        /* =========================
+           REVEAL ANIMATION
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+
+            transition:
+                opacity 0.9s ease,
+                transform 0.9s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 150px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .eyebrow {
+                justify-content: center;
+            }
+
+            .profile-container {
+                width: min(330px, 85vw);
+                height: 420px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 90px 25px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-<header>
-    <div class="container">
-        <h1>Hi, I'm Ankit 👋</h1>
-        <h2>Student • Developer • Tech Enthusiast</h2>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-        <p>
-            Welcome to my personal portfolio.
-            Here you can find my projects, skills and experience.
-        </p>
+    <nav>
+        <a href="#" class="logo">
+            ANKIT<span>DEO</span>
+        </a>
 
-        <div class="buttons">
-            <a href="#projects">My Projects</a>
-            <a href="#contact">Contact Me</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <header class="hero">
+
+            <div class="hero-content reveal">
+
+                <div class="eyebrow">
+                    Developer / Creator
+                </div>
+
+                <h1>
+                    ANKIT
+                    <span>DEO</span>
+                </h1>
+
+                <p class="hero-description">
+                    I build digital experiences, explore technology,
+                    and turn ideas into useful projects.
+                    Welcome to my corner of the internet.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects" class="btn primary">
+                        View My Work
+                    </a>
+
+                    <a href="#contact" class="btn secondary">
+                        Get In Touch
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-container reveal">
+
+                <div class="profile-frame">
+
+                    <!--
+                        PUT YOUR PHOTO IN THE REPOSITORY
+                        AND NAME IT:
+
+                        profile.jpg
+                    -->
+
+                    <img src="profile.jpg" alt="Ankit Deo">
+
+                    <div class="profile-label">
+                        Ankit Deo
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about" class="reveal">
+
+            <div class="section-number">
+                01 — ABOUT
+            </div>
+
+            <h2 class="section-title">
+                The person <span>behind</span> the code.
+            </h2>
+
+            <div class="about-grid">
+
+                <div class="about-text">
+
+                    <p>
+                        I'm Ankit Deo, a technology enthusiast and
+                        developer who enjoys learning, experimenting
+                        and building things.
+                    </p>
+
+                    <p>
+                        I believe the best way to learn technology
+                        is to actually build with it. This website
+                        represents my journey, projects and the
+                        things I'm currently exploring.
+                    </p>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-title">
+                            Curiosity
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-title">
+                            Learning
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-number">01</div>
+                        <div class="stat-title">
+                            Journey
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-number">♟</div>
+                        <div class="stat-title">
+                            Strategy
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILLS
+        ========================== -->
+
+        <section id="skills" class="reveal">
+
+            <div class="section-number">
+                02 — SKILLS
+            </div>
+
+            <h2 class="section-title">
+                Tools of the <span>game.</span>
+            </h2>
+
+            <div class="skills">
+
+                <div class="skill">C</div>
+                <div class="skill">C++</div>
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Git</div>
+                <div class="skill">GitHub</div>
+                <div class="skill">Linux</div>
+                <div class="skill">Cybersecurity</div>
+                <div class="skill">Problem Solving</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section id="projects" class="reveal">
+
+            <div class="section-number">
+                03 — PROJECTS
+            </div>
+
+            <h2 class="section-title">
+                Moves I've <span>made.</span>
+            </h2>
+
+
+            <div class="projects">
+
+                <article class="project">
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>Portfolio</h3>
+
+                    <p>
+                        A personal portfolio website designed
+                        around a minimal black-and-white
+                        chess aesthetic.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>Coming Soon</h3>
+
+                    <p>
+                        Something new is being built.
+                        Check back soon to see what comes next.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        Coming Soon →
+                    </a>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>Coming Soon</h3>
+
+                    <p>
+                        Another project currently on the board.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        Coming Soon →
+                    </a>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        PROJECT 04
+                    </div>
+
+                    <h3>Coming Soon</h3>
+
+                    <p>
+                        Every great project starts with the
+                        first move.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        Coming Soon →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact" class="contact reveal">
+
+            <div class="section-number">
+                04 — CONTACT
+            </div>
+
+            <h2>
+                Let's make<br>
+                <span>something.</span>
+            </h2>
+
+            <p>
+                Have an idea, project or opportunity?
+                I'd love to hear about it.
+            </p>
+
+            <!-- Replace this email with your real email -->
+
+            <a
+                href="mailto:your-email@example.com"
+                class="email"
+            >
+                your-email@example.com
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div>
+            © 2026 Ankit Deo
         </div>
-    </div>
-</header>
 
-<section id="about">
-    <h2>About Me</h2>
+        <div>
+            Built with curiosity ♟
+        </div>
 
-    <div class="card">
-        <p>
-            I'm Ankit, a technology enthusiast interested in
-            programming, cybersecurity and building interesting projects.
-        </p>
-    </div>
-</section>
+    </footer>
 
-<section id="projects">
-    <h2>Projects</h2>
 
-    <div class="card">
-        <h3>Project 1</h3>
-        <p>My first project will appear here.</p>
-    </div>
+    <!-- =========================
+         ANIMATION SCRIPT
+    ========================== -->
 
-    <div class="card">
-        <h3>Project 2</h3>
-        <p>Another project I'm working on.</p>
-    </div>
-</section>
+    <script>
 
-<section id="contact">
-    <h2>Contact</h2>
+        const reveals = document.querySelectorAll(".reveal");
 
-    <div class="card">
-        <p>Email: your-email@example.com</p>
-        <p>GitHub: AnkitDeoOfficial</p>
-    </div>
-</section>
+        const observer = new IntersectionObserver(
+            (entries) => {
 
-<footer>
-    © 2026 Ankit Deo. All rights reserved.
-</footer>
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("active");
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        reveals.forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+    </script>
 
 </body>
 </html>
